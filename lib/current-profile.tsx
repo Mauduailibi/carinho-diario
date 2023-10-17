@@ -12,7 +12,13 @@ export default async function currentProfile() {
     },
   });
 
-  if (profile) return profile;
+  if (profile)
+    return {
+      ...profile,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      imageUrl: user.imageUrl,
+    };
 
   const newProfile = await db.profile.create({
     data: {
