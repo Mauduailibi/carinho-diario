@@ -1,10 +1,14 @@
-import { UserButton } from '@clerk/nextjs';
+import DiarioClient from './components/client';
+import currentProfile from '@/lib/current-profile';
 
-export default function DiarioPage() {
+export default async function DiarioPage() {
+  const profile = await currentProfile();
+
+  if (!profile) return null;
+
   return (
-    <div>
-      <h1>Logado</h1>
-      <UserButton afterSignOutUrl="/" />
+    <div className="w-full">
+      <DiarioClient profile={profile} />
     </div>
   );
 }

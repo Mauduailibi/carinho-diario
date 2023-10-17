@@ -26,6 +26,7 @@
 		"@typescript-eslint/strict-boolean-expressions": 0,
 		"@typescript-eslint/no-confusing-void-expression": "off",
 		"@typescript-eslint/array-type": "off",
-		"@typescript-eslint/consistent-type-imports": "off"
+		"@typescript-eslint/consistent-type-imports": "off",
+		"@typescript-eslint/no-misused-promises": "off"
     }
 }

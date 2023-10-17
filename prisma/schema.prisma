@@ -8,7 +8,7 @@ generator client {
 }
 
 model Profile {
-    id       String    @id @default(uuid()) @map("_id") @db.ObjectId
+    id       String    @id @default(auto()) @map("_id") @db.ObjectId
     userId   String    @unique
     birthday DateTime?
 }
