@@ -73,11 +73,11 @@ export default function DiarioClient({
           <CardHeader>
             <CardTitle>Frase do dia</CardTitle>
           </CardHeader>
-          <CardContent>
-            <p>{motivationalPhrase.content}</p>
+          <CardContent className="text-sm">
+            <p>&quot;{motivationalPhrase.content}&quot;</p>
           </CardContent>
           <CardFooter>
-            <span className="text-black/60 italic font-medium">
+            <span className="text-muted-foreground italic font-medium">
               {motivationalPhrase.author}
             </span>
           </CardFooter>
@@ -86,12 +86,11 @@ export default function DiarioClient({
         <Card>
           <CardHeader className={cn('', isTarotBlur && 'blur')}>
             <CardTitle>{tarotCard.name}</CardTitle>
-            <CardDescription>{tarotCard.type}</CardDescription>
           </CardHeader>
           <CardContent className={cn('', isTarotBlur && 'blur')}>
-            <div className="space-y-2 font-medium">
+            <div className="space-y-2 font-medium text-sm">
               <p>{tarotCard.desc}</p>
-              <p className="text-black/60">
+              <p className="text-muted-foreground">
                 Significado:{' '}
                 <span className="italic">{tarotCard.meaning_up}</span>
               </p>
