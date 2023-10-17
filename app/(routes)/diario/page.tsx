@@ -108,10 +108,24 @@ export default async function DiarioPage() {
     }
   }
 
+  // Request dog image
+  async function getDogImage() {
+    try {
+      const response = await axios.get(
+        `${process.env.DOG_API_URL}/breeds/image/random`,
+      );
+
+      return response.data.message;
+    } catch (error) {
+      return '';
+    }
+  }
+
   const tarotCard = await getTodayTarot();
   const motivationalPhrase = await getMotivationalPhrase();
   const horoscope = await getTodayHoroscope();
   const movieRecommendation = await getMovieRecommendation();
+  const dogImage = await getDogImage();
 
   return (
     <div className="w-full">
@@ -121,6 +135,7 @@ export default async function DiarioPage() {
         tarotCard={tarotCard}
         horoscope={horoscope}
         movie={movieRecommendation}
+        dog={dogImage}
       />
     </div>
   );

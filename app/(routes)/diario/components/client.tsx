@@ -53,6 +53,7 @@ interface DiarioClientProps {
     vote_average: number;
     release_date: string;
   };
+  dog: string;
 }
 
 export default function DiarioClient({
@@ -61,6 +62,7 @@ export default function DiarioClient({
   tarotCard,
   horoscope,
   movie,
+  dog,
 }: DiarioClientProps) {
   const [hasBirthday, setHasBirthday] = useState(false);
   const [isTarotBlur, setIsTarotBlur] = useState(true);
@@ -100,6 +102,22 @@ export default function DiarioClient({
               {motivationalPhrase.author}
             </span>
           </CardFooter>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>Doguinho aleatório</CardTitle>
+            <CardDescription>Só porque é fofo mesmo</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Image
+              src={dog}
+              width={1080}
+              height={720}
+              alt="dog"
+              className="rounded-md md:w-[200px] md:h-auto"
+            />
+          </CardContent>
         </Card>
 
         <Card>
