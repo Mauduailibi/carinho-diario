@@ -6,7 +6,8 @@
     },
     "extends": [
         "standard-with-typescript",
-        "plugin:react/recommended",
+		"eslint:recommended", 
+		"next",
 		"prettier"
     ],
     "parserOptions": {
