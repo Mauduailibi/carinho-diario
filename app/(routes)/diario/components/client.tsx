@@ -77,7 +77,7 @@ export default function DiarioClient({
     <>
       <BirthdayModal profileId={profile.id} isOpen={!hasBirthday} />
       <Header />
-      <div className="w-full p-3 space-y-3">
+      <div className="w-full px-3 py-6 space-y-6">
         <div className="w-full flex flex-col items-center">
           <Avatar className="w-1/3 md:w-[100px] h-auto">
             <AvatarImage src={profile.imageUrl} />
