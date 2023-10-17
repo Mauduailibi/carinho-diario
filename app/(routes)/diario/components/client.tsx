@@ -17,6 +17,7 @@ import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Heart } from 'lucide-react';
 
 interface DiarioClientProps {
   profile: {
@@ -180,6 +181,15 @@ export default function DiarioClient({
             </Link>
           </CardFooter>
         </Card>
+
+        <footer className="w-full flex justify-center items-center font-medium text-sm p-3">
+          <span>Feito com </span>
+          <Heart className="w-4 h-4 text-red-500 fill-red-500 mx-1" />
+          <span> por </span>
+          <Link href="https://mauricioneto.dev" target="_blank">
+            <span className="underline ml-1">Mauricio Neto</span>
+          </Link>
+        </footer>
       </div>
     </>
   );
