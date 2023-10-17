@@ -2,12 +2,14 @@ import axios from 'axios';
 import DiarioClient from './components/client';
 import currentProfile from '@/lib/current-profile';
 import translate from 'translate';
+import { getPortugueseSign, getZodiacSign } from '@/functions/getZodiacSign';
 
 export default async function DiarioPage() {
   const profile = await currentProfile();
 
   if (!profile) return null;
 
+  //    Request Tarot
   async function getTodayTarot() {
     const response = await axios.get(
       `${process.env.TAROT_API_URL}/cards/random?n=1`,
@@ -26,6 +28,7 @@ export default async function DiarioPage() {
     return tarotCard;
   }
 
+  // Request Motivational Phrase
   async function getMotivationalPhrase() {
     const response = await axios.get(
       'https://api.quotable.io/random?tags=love|happiness',
@@ -39,8 +42,27 @@ export default async function DiarioPage() {
     };
   }
 
+  // Request todays horoscope
+  async function getTodayHoroscope() {
+    const sign = await getZodiacSign(
+      profile.birthday.toISOString().split('T')[0],
+    );
+
+    const response = await axios.post(`https://newastro.vercel.app/`, {
+      date: new Date().toISOString().split('T')[0],
+      sign,
+      lang: 'pt',
+    });
+
+    return {
+      ...response.data,
+      sign: await getPortugueseSign(sign),
+    };
+  }
+
   const tarotCard = await getTodayTarot();
   const motivationalPhrase = await getMotivationalPhrase();
+  const horoscope = await getTodayHoroscope();
 
   return (
     <div className="w-full">
@@ -48,6 +70,7 @@ export default async function DiarioPage() {
         profile={profile}
         motivationalPhrase={motivationalPhrase}
         tarotCard={tarotCard}
+        horoscope={horoscope}
       />
     </div>
   );

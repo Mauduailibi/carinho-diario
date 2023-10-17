@@ -38,12 +38,18 @@ interface DiarioClientProps {
     meaning_up: string;
     desc: string;
   };
+  horoscope: {
+    horoscope: string;
+    sign: string;
+    date: string;
+  };
 }
 
 export default function DiarioClient({
   profile,
   motivationalPhrase,
   tarotCard,
+  horoscope,
 }: DiarioClientProps) {
   const [hasBirthday, setHasBirthday] = useState(false);
   const [isTarotBlur, setIsTarotBlur] = useState(true);
@@ -104,6 +110,16 @@ export default function DiarioClient({
               {isTarotBlur ? 'Revelar Tarot' : 'Esconder Tarot'}
             </Button>
           </CardFooter>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>Horóscopo</CardTitle>
+            <CardDescription>{horoscope.sign}</CardDescription>
+          </CardHeader>
+          <CardContent className="text-sm">
+            <p>{horoscope.horoscope}</p>
+          </CardContent>
         </Card>
       </div>
     </>
